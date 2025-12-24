@@ -1,8 +1,8 @@
 import subprocess
 
-def check_wg_interface(interface="wg0"):
+def check_wg_interface(profile):
     try:
-        res = subprocess.run(["wg", "show", interface], capture_output=True, text=True)
-        return res.returncode == 0 and "interface" in res.stdout
+        result = subprocess.run(["wg", "show", profile], capture_output=True)
+        return result.returncode == 0
     except:
         return False
