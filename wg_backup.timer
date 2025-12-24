@@ -1,0 +1,10 @@
+[Unit]
+Description=Run iPWGBackup every 12 hours
+
+[Timer]
+OnBootSec=5min
+OnUnitActiveSec=12h
+Unit=wg_backup.service
+
+[Install]
+WantedBy=timers.target
