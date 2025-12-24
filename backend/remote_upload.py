@@ -1,5 +1,4 @@
-import paramiko
-import os
+import paramiko, os
 
 SFTP_HOST = "sftp.example.com"
 SFTP_PORT = 22
@@ -9,7 +8,7 @@ REMOTE_PATH = "/remote/backups/"
 
 class RemoteUploader:
     def upload_backup(self, profile):
-        local_dir = f"/opt/ipwgbackup/backups/"
+        local_dir = "/opt/ipwgbackup/backups/"
         for file in os.listdir(local_dir):
             if file.startswith(profile) and file.endswith(".enc"):
                 local_file = os.path.join(local_dir, file)
