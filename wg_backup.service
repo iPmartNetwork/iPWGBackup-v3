@@ -3,7 +3,7 @@ Description=iPWGBackup Professional Service
 After=network.target
 
 [Service]
-ExecStart=/usr/bin/python3 /opt/ipwgbackup/backend/app.py
+ExecStart=/usr/bin/python3 /opt/ipwgbackup/backend/bot.py
 WorkingDirectory=/opt/ipwgbackup
 Restart=always
 User=root
