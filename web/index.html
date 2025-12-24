@@ -4,37 +4,16 @@
 <meta charset="UTF-8">
 <title>iPWGBackup Dashboard</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css">
-<script>
-async function runBackup() {
-    const res = await fetch("/backup", {method:"POST", headers:{"Content-Type":"application/json"}, body:JSON.stringify({profile:"wg0"})});
-    const data = await res.json();
-    alert(data.message);
-    loadHistory();
-}
-
-async function loadHistory() {
-    const res = await fetch("/history");
-    const history = await res.json();
-    let table = document.getElementById("historyTable");
-    table.innerHTML = "";
-    history.forEach(h => {
-        let row = table.insertRow();
-        row.insertCell(0).innerText = h.file;
-        row.insertCell(1).innerText = h.timestamp;
-        row.insertCell(2).innerText = h.status;
-    });
-}
-
-window.onload = loadHistory;
-</script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="scripts.js"></script>
+<link rel="stylesheet" href="styles.css">
 </head>
 <body class="p-5">
 <h1>iPWGBackup Dashboard</h1>
-<button class="btn btn-primary mb-3" onclick="runBackup()">Run Backup</button>
-<table class="table table-striped">
-<thead>
-<tr><th>File</th><th>Timestamp</th><th>Status</th></tr>
-</thead>
+<button class="btn btn-primary mb-3" onclick="runBackup('wg0')">Run Backup wg0</button>
+<canvas id="historyChart" height="100"></canvas>
+<table class="table table-striped mt-3">
+<thead><tr><th>File</th><th>Profile</th><th>Timestamp</th><th>Status</th></tr></thead>
 <tbody id="historyTable"></tbody>
 </table>
 </body>
