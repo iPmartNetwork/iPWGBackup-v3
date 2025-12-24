@@ -1,0 +1,12 @@
+[Unit]
+Description=iPWGBackup Service
+After=network.target
+
+[Service]
+ExecStart=/usr/bin/python3 /opt/ipwgbackup/backend/app.py
+WorkingDirectory=/opt/ipwgbackup
+Restart=always
+User=root
+
+[Install]
+WantedBy=multi-user.target
