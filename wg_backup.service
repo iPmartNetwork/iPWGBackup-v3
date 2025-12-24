@@ -1,5 +1,5 @@
 [Unit]
-Description=iPWGBackup Service
+Description=iPWGBackup Professional Service
 After=network.target
 
 [Service]
